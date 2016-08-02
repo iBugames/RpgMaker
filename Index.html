@@ -1,0 +1,89 @@
+<html>
+	<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<!-- <script>
+			var Linhas = 10;
+			var Colunas = 10;
+			var square_Size = 64;
+			document.getElementById("grass").style.height = square_Size*Colunas;
+			document.getElementById("grass").style.width = square_Size*Linhas;
+		</script> -->
+		<script type="text/javascript">
+		var body = document.body;
+		var html = document.documentElement;
+
+		var height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
+		var width = Math.max( body.scrollWidth, body.offsetWidth, html.clientWidth, html.scrollWidth, html.offsetWidth );
+		console.log(height);
+		console.log(width);
+
+		var Linhas = Math.floor(height/33);
+		var Colunas = Math.floor(width/33);
+
+		console.log(Linhas)
+		console.log(Colunas)
+
+		function CreateMap() {
+
+			for (var i = 0; i < Linhas; i++) {
+				for (var j = 0; j < Colunas; j++) {
+					var Div = document.createElement('div');
+					Div.id = 'grass';
+					document.getElementsByTagName('body')[0].appendChild(Div);
+				}
+				document.getElementsByTagName('body')[0].innerHTML += '</br>';
+			}
+		}
+
+
+		function CreatePlayer(){
+			var Div = document.createElement('div');
+			Div.id = 'player';
+			document.getElementsByTagName('body')[0].appendChild(Div);
+		}
+
+
+
+
+		CreateMap();
+		CreatePlayer();
+		var Linha = 0;
+		var Coluna = 0;
+		document.getElementsByTagName('body')[0].onkeydown = function(e) {
+		    e = e || window.event;
+
+		    if (e.keyCode == '38') {
+		    	if(Linha > 0){
+			    	Linha--;
+					document.getElementById('player').style.top = Linha*32;
+					console.log('top')
+				}
+		    }
+		    else if (e.keyCode == '40') {
+		    	if(Linha < Linhas-1){
+			    	Linha++;
+					 document.getElementById('player').style.top = Linha*32;
+					console.log('down')
+				}
+		    }
+		    else if (e.keyCode == '37') {
+		    	if(Coluna > 0){
+			    	Coluna--;
+					document.getElementById('player').style.left = Coluna*32;
+					console.log('left')
+				}
+		    }
+		    else if (e.keyCode == '39') {
+		    	if(Coluna < Colunas-1){
+			    	Coluna++;
+					document.getElementById('player').style.left = Coluna*32	;
+					console.log('right')
+				}
+		    }
+
+		}
+		</script>
+	</body>
+</html>

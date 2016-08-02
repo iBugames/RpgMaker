@@ -1,0 +1,23 @@
+body{
+	padding: 0px;
+	margin: 0px;
+}
+
+#grass {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background: green;
+    border: 1px solid;
+}
+
+#player {
+    width: 30px;
+    height: 30px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    display: inline-block;
+    background: blue;
+    border: 1px solid;
+}
