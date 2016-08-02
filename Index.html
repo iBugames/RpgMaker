@@ -31,61 +31,96 @@
 		var begin_x = 0;
 		var begin_y = 0;
 
-		var pc_y = Linhas-1;
-		var pc_x = Colunas-1;
+		var pc_y = Colunas-1;
+		var pc_x = Linhas-1;
 
 		var pc = false;
 
-		var mapa = new Array(Colunas);
-		for (var i = 0; i < Colunas; i++) {
-			mapa[i] = new Array(Linhas);
-		}
+		var mapa = [];
 
 		
 
 		function CreateMap() {
 			var obstacle;
 			for (var i = 0; i < Linhas; i++) {
+				mapa[i] = [];
 				for (var j = 0; j < Colunas; j++) {
 					var Div = document.createElement('div');
 					obstacle = Math.random();
 					if (obstacle > 0.9) {
-						Div.id = 'obstacle';
-						mapa[j][i] = 2;
+						mapa[i][j] = 2;
 					}else{
-						Div.id = 'grass';
-						mapa[j][i] = 0;
-					}
-					if(i==begin_x && j==begin_y){
-						Div.id = 'playerSpot';
-						mapa[j][i] = 0;
+						mapa[i][j] = 0;
 					}	
-					if(i==pc_y && j==pc_x){
-						Div.id = 'PCSpot';
-						mapa[j][i] = 3;
-					}	
+				}
+			}
+			mapa[pc_x][pc_y] = 3
+			mapa[begin_x][begin_y] = 4
+			console.log(mapa)
+		}
+
+		function PrintGrass(){
+			for (var i = 0; i < Linhas; i++) {
+				for (var j = 0; j < Colunas; j++) {
+					var Div = document.createElement('div');
+					Div.id = 'grass';
 					document.getElementsByTagName('body')[0].appendChild(Div);
+					document.getElementById('grass').style.top = 0;	
 				}
 				document.getElementsByTagName('body')[0].innerHTML += '</br>';
 			}
 		}
+
+		function PrintObstacle(){
+			for (var i = 0; i < Linhas; i++) {
+				for (var j = 0; j < Colunas; j++) {
+					if (mapa[i][j]==2) {
+						var Div = document.createElement('div');
+						Div.id = 'obstacle';
+						document.getElementsByTagName('body')[0].appendChild(Div);
+					}
+				}
+				document.getElementsByTagName('body')[0].innerHTML += '</br>';
+			}
+		} 	
+
+
+
+		// function CreateMap() {
+		// 	var obstacle;
+		// 	for (var i = 0; i < Linhas; i++) {
+		// 		for (var j = 0; j < Colunas; j++) {
+		// 			var Div = document.createElement('div');
+		// 			obstacle = Math.random();
+		// 			if (obstacle > 0.9) {
+		// 				Div.id = 'obstacle';
+		// 				mapa[j][i] = 2;
+		// 			}else{
+		// 				Div.id = 'grass';
+		// 				mapa[j][i] = 0;
+		// 			}
+		// 			if(i==begin_x && j==begin_y){
+		// 				Div.id = 'playerSpot';
+		// 				mapa[j][i] = 0;
+		// 			}	
+		// 			if(i==pc_y && j==pc_x){
+		// 				Div.id = 'PCSpot';
+		// 				mapa[j][i] = 3;
+		// 			}	
+		// 			document.getElementsByTagName('body')[0].appendChild(Div);
+		// 		}
+		// 		document.getElementsByTagName('body')[0].innerHTML += '</br>';
+		// 	}
+		// }
 
 
 		function CreatePlayer(){
 			var Div = document.createElement('div');
 			Div.id = 'player';
 			document.getElementsByTagName('body')[0].appendChild(Div);
-			mapa[player_x][player_y] = 1;
 		}
 
-		console.log(mapa);
-
-
-		CreateMap();
-		CreatePlayer();
-		var Linha = 0;
-		var Coluna = 0;
-		document.getElementsByTagName('body')[0].onkeydown = function(e) {
+		function Joga(e){
 		    e = e || window.event;
 
 		    if (e.keyCode == '38') {
@@ -136,10 +171,14 @@
 		    if(pc && player_x == begin_x && player_y == begin_y){
 		    	alert('Parabens! Ganhou o jogo!')
 		    }
-
-					// console.log('pc_x: '+ pc_x + 'pc_y: ' + pc_y)
-					console.log('p_x: '+ player_x + 'p_y: ' + player_y)
 		}
+
+		CreateMap();
+		PrintGrass();
+		CreatePlayer();
+		var Linha = 0;
+		var Coluna = 0;
+		document.getElementsByTagName('body')[0].onkeydown = Joga;
 		</script>
 	</body>
 </html>
