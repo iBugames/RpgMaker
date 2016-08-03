@@ -21,6 +21,14 @@ body{
     background-image: url(images/rock.png);
 }
 
+#hole {
+	z-index: 0;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    background-image: url(images/hole1.png);
+}
+
 #playerSpot {
     width: 30px;
     height: 30px;
