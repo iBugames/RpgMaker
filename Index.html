@@ -42,9 +42,9 @@
 
 		function CreateMap() {
 			var obstacle;
-			for (var i = 0; i < Linhas; i++) {
+			for (var i = 0; i < Colunas; i++) {
 				mapa[i] = [];
-				for (var j = 0; j < Colunas; j++) {
+				for (var j = 0; j < Linhas; j++) {
 					var Div = document.createElement('div');
 					obstacle = Math.random();
 					if (obstacle > 0.9) {
@@ -72,15 +72,16 @@
 		}
 
 		function PrintObstacle(){
-			for (var i = 0; i < Linhas; i++) {
-				for (var j = 0; j < Colunas; j++) {
+			for (var i = 0; i < Colunas; i++) {
+				for (var j = 0; j < Linhas; j++) {
 					if (mapa[i][j]==2) {
 						var Div = document.createElement('div');
 						Div.id = 'obstacle';
+						Div.style.top=(32*j)-17;
+						Div.style.left=32*i;
 						document.getElementsByTagName('body')[0].appendChild(Div);
 					}
 				}
-				document.getElementsByTagName('body')[0].innerHTML += '</br>';
 			}
 		} 	
 
@@ -175,6 +176,7 @@
 
 		CreateMap();
 		PrintGrass();
+		PrintObstacle();
 		CreatePlayer();
 		var Linha = 0;
 		var Coluna = 0;
