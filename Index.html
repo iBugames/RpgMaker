@@ -130,6 +130,7 @@
 					mapa[player_x][player_y] = 0;
 			    	player_y--;
 					document.getElementById('player').style.top = Linha*32;
+					document.getElementById('player').style.backgroundImage = "url('images/playerTop.png')"; 
 					mapa[player_x][player_y] = 1;
 					console.log('top')
 				}
@@ -139,7 +140,8 @@
 			    	Linha++;
 					mapa[player_x][player_y] = 0;
 			    	player_y++;
-					 document.getElementById('player').style.top = Linha*32;
+					document.getElementById('player').style.top = Linha*32;
+					document.getElementById('player').style.backgroundImage = "url('images/playerDown.png')"; 
 					mapa[player_x][player_y] = 1;
 					console.log('down')
 				}
@@ -150,6 +152,7 @@
 					mapa[player_x][player_y] = 0;
 			    	player_x--;
 					document.getElementById('player').style.left = Coluna*32;
+					document.getElementById('player').style.backgroundImage = "url('images/playerLeft.png')"; 
 					mapa[player_x][player_y] = 1;
 					console.log('left')
 				}
@@ -160,6 +163,7 @@
 					mapa[player_x][player_y] = 0;
 			    	player_x++;
 					document.getElementById('player').style.left = Coluna*32;
+					document.getElementById('player').style.backgroundImage = "url('images/playerRight.png')"; 
 					mapa[player_x][player_y] = 1;
 					console.log('right')
 				}
